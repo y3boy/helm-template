@@ -1,0 +1,29 @@
+{{- if .Values.service.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mychart.fullname" . }}
+  labels:
+    {{- include "mychart.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  {{- if .Values.service.ports }}
+  {{- range $_, $value := .Values.service.ports }}
+  ports:
+    - name: {{ $value.name }}
+      port: {{ $value.port }}
+      targetPort: {{ $value.targetPort }}
+      protocol: {{ $value.protocol }}
+  {{- end }}
+  {{- else }}
+  {{- range $_, $value := .Values.ports }}
+  ports:
+    - name: {{ $value.name }}
+      port: {{ $value.containerPort }} # Service port would be same as container ports
+      targetPort: {{ $value.name }}
+      protocol: {{ $value.protocol }}
+  {{- end }}
+  {{- end }}
+  selector:
+    {{- include "mychart.selectorLabels" . | nindent 4 }}
+{{- end -}}
