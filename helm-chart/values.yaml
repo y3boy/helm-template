@@ -41,9 +41,9 @@ sidecars:
   #   command:
   #   args:
 
-env:
-  - name: ENV_VAR_NAME
-    value: "A"
+env: []
+  # - name: ENV_VAR_NAME
+  #   value: "ENV_VAR_VALUE"
 
 serviceAccount:
   # Specifies whether a service account should be created
