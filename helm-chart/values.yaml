@@ -20,26 +20,27 @@ ports:
 
 restartPolicy: OnFailure
 
-# Specifies list of initContainers
-initContainers:
-  - name: db
-    securityContext: {}
-    image:
-      repository:
-      pullPolicy: IfNotPresent
-      tag:
-    command: []
-    args: []
-
-sidecars:
-  # - name:
+# Specifies list of init containers
+initContainers: {}
+  # - name: db-migration
   #   securityContext: {}
   #   image:
   #     repository:
   #     pullPolicy: IfNotPresent
   #     tag:
-  #   command:
-  #   args:
+  #   command: []
+  #   args: []
+
+# Specifies list of side-cars containers
+sideCars: {}
+  # - name: log
+  #   securityContext: {}
+  #   image:
+  #     repository:
+  #     pullPolicy: IfNotPresent
+  #     tag:
+  #   command: []
+  #   args: []
 
 env: []
   # - name: ENV_VAR_NAME
@@ -109,20 +110,20 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
+livenessProbe: {}
+  # httpGet:
+  #   path: /
+  #   port: http
+readinessProbe: {}
+  # httpGet:
+  #   path: /
+  #   port: http
 
 autoscaling:
   enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
+  # minReplicas: 1
+  # maxReplicas: 100
+  # targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
 # Additional volumes on the output Deployment definition.
