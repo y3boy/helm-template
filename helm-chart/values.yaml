@@ -46,6 +46,12 @@ env: []
   # - name: ENV_VAR_NAME
   #   value: "ENV_VAR_VALUE"
 
+envFrom:
+#   - secretRef:
+#       name: bc-sync
+#   - configMapRef:
+#       name: bc-sync
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
