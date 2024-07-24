@@ -13,6 +13,12 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
+# Override image entrypoint command
+command: []
+
+# Override image entrypoint command args
+args: []
+
 ports:
   - name: http
     containerPort: 80
