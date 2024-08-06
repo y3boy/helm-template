@@ -14,7 +14,7 @@ spec:
   {{- with .Values.strategy }}
   strategy:
     {{- toYaml . | nindent 4 }}
-  {{- end }} 
+  {{- end }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
